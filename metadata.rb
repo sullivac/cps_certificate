@@ -1,20 +1,14 @@
 name 'cps_certificate'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'All Rights Reserved'
+maintainer 'Corey Sullivan'
+maintainer_email 'sullivac@fastmail.fm'
+license 'MIT'
 description 'Installs/Configures cps_certificate'
 long_description 'Installs/Configures cps_certificate'
 version '0.1.0'
 chef_version '>= 12.14' if respond_to?(:chef_version)
+issues_url 'https://github.com/sullivac/cps_certificate/issues'
+source_url 'https://github.com/sullivac/cps_certificate'
 
-# The `issues_url` points to the location where issues for this cookbook are
-# tracked.  A `View Issues` link will be displayed on this cookbook's page when
-# uploaded to a Supermarket.
-#
-# issues_url 'https://github.com/<insert_org_here>/cps_certificate/issues'
+supports 'windows'
 
-# The `source_url` points to the development repository for this cookbook.  A
-# `View Source` link will be displayed on this cookbook's page when uploaded to
-# a Supermarket.
-#
-# source_url 'https://github.com/<insert_org_here>/cps_certificate'
+depends 'windows'

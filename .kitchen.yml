@@ -1,20 +1,37 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: <redacted>
+  region: <redacted>
+  availability_zone: <redacted>
+  subnet_id: <redacted>
+  instance_type: t2.large
+  # Windows Server 2016 Base image from AWS Marketplace
+  image_id: ami-f0df538f
+  security_group_ids: ["<redacted>"]
+  tags:
+  retryable_tries: 300
 
 provisioner:
   name: chef_zero
-  # You may wish to disable always updating cookbooks in CI or other testing environments.
-  # For example:
-  #   always_update_cookbooks: <%= !ENV['CI'] %>
-  always_update_cookbooks: true
+
+transport:
+  ssh_key: <redacted>
+  username: Administrator
+  elevated: true
 
 verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7
+  - name: windows-2016
+    transport:
+      name: winrm
+    driver:
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            delete_on_termination: true
 
 suites:
   - name: default
